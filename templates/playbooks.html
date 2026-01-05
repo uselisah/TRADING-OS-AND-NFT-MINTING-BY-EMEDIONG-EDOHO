@@ -11,292 +11,363 @@
         --success-color: #10b981;
         --warning-color: #f59e0b;
         --danger-color: #ef4444;
-        --day-color: #f8fafc;
-        --day-border: #e2e8f0;
+        --bg-light: #f8fafc;
+        --border-color: #e2e8f0;
     }
     
-    .challenge-container {
-        max-width: 1400px;
+    body {
+        background: var(--bg-light);
+    }
+    
+    .playbook-container {
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 2rem 1rem;
+        padding: 0;
+        font-family: 'Segoe UI', system-ui, sans-serif;
     }
     
-    /* Challenge Header */
-    .challenge-header {
-        text-align: center;
-        margin-bottom: 3rem;
-        position: relative;
-        padding: 2rem;
-        background: linear-gradient(135deg, rgba(9, 51, 102, 0.05), rgba(227, 176, 49, 0.05));
-        border-radius: 20px;
-        border: 3px solid var(--primary-accent);
-    }
-    
-    .challenge-title {
-        font-size: 3rem;
-        font-weight: 900;
-        background: linear-gradient(135deg, var(--primary-dark), var(--secondary-accent));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 0.5rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-    
-    .challenge-subtitle {
-        font-size: 1.5rem;
-        color: var(--primary-dark);
-        font-weight: 700;
-        margin-bottom: 1rem;
-    }
-    
-    .challenge-tagline {
-        font-size: 1.2rem;
-        color: var(--primary-accent);
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-bottom: 1.5rem;
-    }
-    
-    .challenge-stats {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-    
-    .stat-box {
-        background: white;
-        padding: 1rem 2rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(9, 51, 102, 0.1);
-        border: 2px solid var(--primary-accent);
-    }
-    
-    .stat-number {
-        font-size: 2rem;
-        font-weight: 900;
-        color: var(--primary-dark);
-    }
-    
-    .stat-label {
-        font-size: 0.9rem;
-        color: var(--secondary-accent);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    
-    /* Controls Section */
-    .controls-section {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 16px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        margin-bottom: 2rem;
-        border: 2px solid var(--primary-accent);
-    }
-    
-    .controls-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-        align-items: end;
-    }
-    
-    .orientation-toggle {
-        display: flex;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
-    }
-    
-    .orientation-btn {
-        flex: 1;
-        padding: 0.75rem;
-        border: 2px solid var(--day-border);
-        background: white;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        font-weight: 600;
-    }
-    
-    .orientation-btn.active {
-        background: var(--primary-dark);
+    /* Hero Banner */
+    .playbook-hero {
+        background: linear-gradient(135deg, var(--primary-dark), #0a3d7a);
         color: white;
-        border-color: var(--primary-dark);
-    }
-    
-    .orientation-btn:hover:not(.active) {
-        border-color: var(--secondary-accent);
-    }
-    
-    /* Days Grid - Landscape Layout (Default) */
-    .days-grid-landscape {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 1.2rem;
-        margin-bottom: 2rem;
-    }
-    
-    /* Days Grid - Portrait Layout */
-    .days-grid-portrait {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 1rem;
-        margin-bottom: 2rem;
-    }
-    
-    /* Day Card */
-    .day-card {
-        background: var(--day-color);
-        border-radius: 12px;
-        padding: 1.2rem;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        border: 3px solid transparent;
+        padding: 4rem 2rem;
+        text-align: center;
         position: relative;
         overflow: hidden;
     }
     
-    .day-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(9, 51, 102, 0.15);
-        border-color: var(--secondary-accent);
-    }
-    
-    .day-card.active {
-        border-color: var(--primary-accent);
-        background: linear-gradient(135deg, rgba(227, 176, 49, 0.1), rgba(14, 129, 242, 0.1));
-    }
-    
-    .day-card.completed {
-        border-color: var(--success-color);
-        background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
-    }
-    
-    .day-number {
-        font-size: 2.5rem;
-        font-weight: 900;
-        color: var(--primary-dark);
-        margin-bottom: 0.5rem;
-        line-height: 1;
-    }
-    
-    .day-content {
-        margin-top: 0.75rem;
-    }
-    
-    .day-title {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: var(--primary-dark);
-        margin-bottom: 0.5rem;
-    }
-    
-    .day-description {
-        font-size: 0.9rem;
-        color: #4b5563;
-        line-height: 1.4;
-    }
-    
-    .day-status {
+    .hero-overlay {
         position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: #e5e7eb;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.8rem;
-    }
-    
-    .day-status.completed {
-        background: var(--success-color);
-        color: white;
-    }
-    
-    .day-status.current {
-        background: var(--primary-accent);
-        color: var(--text-dark);
-        font-weight: bold;
-    }
-    
-    /* Day Detail Modal */
-    .day-modal {
-        display: none;
-        position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        z-index: 1000;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e3b031' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        opacity: 0.1;
     }
     
-    .day-modal.active {
-        display: flex;
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
     }
     
-    .modal-content {
-        background: white;
-        border-radius: 20px;
-        width: 100%;
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 900;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+        line-height: 1.1;
+    }
+    
+    .hero-tagline {
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 2rem;
+        color: var(--primary-accent);
+        letter-spacing: 2px;
+    }
+    
+    .hero-divider {
+        height: 3px;
+        width: 200px;
+        background: var(--primary-accent);
+        margin: 2rem auto;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
         max-width: 600px;
-        max-height: 90vh;
-        overflow-y: auto;
-        border: 5px solid var(--primary-accent);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        margin: 0 auto;
+        line-height: 1.6;
     }
     
-    .modal-header {
+    /* Main Content Layout */
+    .playbook-main {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 0;
+        min-height: calc(100vh - 300px);
+        background: white;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+    }
+    
+    /* Sidebar */
+    .playbook-sidebar {
+        background: var(--primary-dark);
+        color: white;
+        padding: 2.5rem 2rem;
+        height: 100%;
+        border-right: 5px solid var(--primary-accent);
+    }
+    
+    .sidebar-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        color: var(--primary-accent);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    
+    .sidebar-section {
+        margin-bottom: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--primary-accent);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        opacity: 0.9;
+    }
+    
+    .sidebar-nav {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .nav-item {
+        margin-bottom: 0.5rem;
+    }
+    
+    .nav-link {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        background: rgba(227, 176, 49, 0.15);
+        color: white;
+        transform: translateX(5px);
+    }
+    
+    .nav-link.active {
+        background: var(--primary-accent);
+        color: var(--primary-dark);
+        font-weight: 600;
+    }
+    
+    .playbook-count {
+        background: var(--primary-accent);
+        color: var(--primary-dark);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-left: auto;
+    }
+    
+    /* Main Content Area */
+    .playbook-content {
+        padding: 3rem;
+        background: white;
+    }
+    
+    .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 3px solid var(--border-color);
+    }
+    
+    .content-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .content-actions {
+        display: flex;
+        gap: 1rem;
+    }
+    
+    /* Cards Grid */
+    .playbooks-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .playbook-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .playbook-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        border-color: var(--primary-accent);
+    }
+    
+    .card-header {
+        padding: 1.5rem;
         background: linear-gradient(135deg, var(--primary-dark), var(--secondary-accent));
         color: white;
-        padding: 2rem;
-        border-radius: 15px 15px 0 0;
         position: relative;
     }
     
-    .modal-day-number {
-        font-size: 4rem;
-        font-weight: 900;
-        line-height: 1;
-        margin-bottom: 0.5rem;
+    .card-day {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        margin-bottom: 0.25rem;
     }
     
-    .modal-title {
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+    
+    .card-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85rem;
+        opacity: 0.9;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .card-description {
+        color: #4b5563;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+    
+    .card-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: var(--bg-light);
+        border-radius: 8px;
+    }
+    
+    .stat {
+        text-align: center;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        display: block;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .card-actions {
+        display: flex;
+        gap: 0.75rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .btn {
+        padding: 0.75rem 1.25rem;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        flex: 1;
+    }
+    
+    .btn-primary {
+        background: linear-gradient(135deg, var(--primary-dark), var(--secondary-accent));
+        color: white;
+    }
+    
+    .btn-secondary {
+        background: var(--primary-accent);
+        color: var(--primary-dark);
+    }
+    
+    .btn-outline {
+        background: transparent;
+        color: var(--primary-dark);
+        border: 2px solid var(--border-color);
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Create Playbook Form */
+    .create-section {
+        background: white;
+        border-radius: 16px;
+        padding: 2.5rem;
+        margin-bottom: 3rem;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        border: 3px solid var(--primary-accent);
+    }
+    
+    .create-title {
         font-size: 1.8rem;
         font-weight: 700;
-        margin-bottom: 1rem;
+        color: var(--primary-dark);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
     }
     
-    .close-modal {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: var(--primary-accent);
-        color: var(--text-dark);
-        border: none;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        font-size: 1.2rem;
-        cursor: pointer;
-        font-weight: bold;
-    }
-    
-    .modal-body {
-        padding: 2rem;
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
     }
     
     .form-group {
@@ -305,26 +376,31 @@
     
     .form-label {
         display: block;
-        font-weight: 700;
+        font-weight: 600;
         color: var(--primary-dark);
-        margin-bottom: 0.5rem;
-        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
     }
     
-    .form-input, .form-textarea, .form-select {
+    .form-input,
+    .form-textarea,
+    .form-select {
         width: 100%;
-        padding: 1rem;
-        border: 2px solid var(--day-border);
+        padding: 1rem 1.25rem;
+        border: 2px solid var(--border-color);
         border-radius: 10px;
         font-size: 1rem;
         transition: all 0.3s ease;
-        background: #f8fafc;
+        background: var(--bg-light);
+        font-family: inherit;
     }
     
-    .form-input:focus, .form-textarea:focus, .form-select:focus {
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
         border-color: var(--secondary-accent);
         background: white;
-        box-shadow: 0 0 0 3px rgba(14, 129, 242, 0.1);
+        box-shadow: 0 0 0 4px rgba(14, 129, 242, 0.1);
         outline: none;
     }
     
@@ -333,114 +409,89 @@
         resize: vertical;
     }
     
-    .progress-section {
-        margin-bottom: 1.5rem;
-    }
-    
-    .progress-label {
+    .form-actions {
         display: flex;
-        justify-content: space-between;
-        margin-bottom: 0.5rem;
-    }
-    
-    .progress-bar {
-        height: 10px;
-        background: #e5e7eb;
-        border-radius: 5px;
-        overflow: hidden;
-    }
-    
-    .progress-fill {
-        height: 100%;
-        background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
-        transition: width 0.3s ease;
-    }
-    
-    .checkbox-group {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .modal-actions {
-        display: flex;
+        justify-content: flex-end;
         gap: 1rem;
         margin-top: 2rem;
-        padding-top: 1.5rem;
-        border-top: 2px solid var(--day-border);
     }
     
-    .btn {
-        flex: 1;
-        padding: 1rem;
-        border: none;
-        border-radius: 10px;
-        font-size: 1rem;
+    /* No Playbooks State */
+    .empty-state {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: white;
+        border-radius: 16px;
+        border: 3px dashed var(--border-color);
+    }
+    
+    .empty-icon {
+        font-size: 4rem;
+        color: var(--primary-accent);
+        margin-bottom: 1.5rem;
+        opacity: 0.7;
+    }
+    
+    .empty-title {
+        font-size: 1.8rem;
+        color: var(--primary-dark);
+        margin-bottom: 1rem;
         font-weight: 700;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
     }
     
-    .btn-save {
-        background: linear-gradient(135deg, var(--primary-dark), var(--secondary-accent));
-        color: white;
-    }
-    
-    .btn-complete {
-        background: linear-gradient(135deg, var(--success-color), #34d399);
-        color: white;
-    }
-    
-    .btn-cancel {
-        background: #f1f5f9;
-        color: var(--text-dark);
-        border: 2px solid var(--day-border);
-    }
-    
-    .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    .empty-description {
+        color: #6b7280;
+        max-width: 500px;
+        margin: 0 auto 2rem;
+        line-height: 1.6;
     }
     
     /* Responsive Design */
-    @media (max-width: 768px) {
-        .challenge-title {
-            font-size: 2.2rem;
+    @media (max-width: 1024px) {
+        .playbook-main {
+            grid-template-columns: 1fr;
         }
         
-        .challenge-subtitle {
-            font-size: 1.2rem;
-        }
-        
-        .challenge-stats {
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .days-grid-landscape {
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        }
-        
-        .days-grid-portrait {
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        }
-        
-        .modal-content {
-            margin: 1rem;
+        .playbook-sidebar {
+            border-right: none;
+            border-bottom: 5px solid var(--primary-accent);
         }
     }
     
-    /* Animation */
-    @keyframes fadeInUp {
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        
+        .hero-tagline {
+            font-size: 2rem;
+        }
+        
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .playbooks-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .content-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .content-actions {
+            width: 100%;
+            justify-content: flex-start;
+        }
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
         from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
         }
         to {
             opacity: 1;
@@ -448,453 +499,378 @@
         }
     }
     
-    .animate-fade-in {
-        animation: fadeInUp 0.6s ease-out;
-    }
-    
-    @keyframes pulse {
-        0% {
-            box-shadow: 0 0 0 0 rgba(227, 176, 49, 0.4);
-        }
-        70% {
-            box-shadow: 0 0 0 10px rgba(227, 176, 49, 0);
-        }
-        100% {
-            box-shadow: 0 0 0 0 rgba(227, 176, 49, 0);
-        }
-    }
-    
-    .day-card.current-day {
-        animation: pulse 2s infinite;
+    .animate-in {
+        animation: fadeIn 0.6s ease-out;
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="challenge-container">
-    <!-- 100-Day Challenge Header -->
-    <div class="challenge-header animate-fade-in">
-        <h1 class="challenge-title">100-DAY CHALLENGE</h1>
-        <div class="challenge-tagline">EDUCATE • INNOVATE • DOMINATE</div>
-        <p class="challenge-subtitle">Transform Your Trading Journey One Day at a Time</p>
-        
-        <div class="challenge-stats">
-            <div class="stat-box">
-                <div class="stat-number">{{ completed_days }}</div>
-                <div class="stat-label">Days Completed</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">{{ current_streak }}</div>
-                <div class="stat-label">Day Streak</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">{{ days_remaining }}</div>
-                <div class="stat-label">Days Left</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">{{ success_rate }}%</div>
-                <div class="stat-label">Success Rate</div>
-            </div>
+<div class="playbook-container">
+    <!-- Hero Banner -->
+    <div class="playbook-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content animate-in">
+            <h1 class="hero-title">ELITE TRADER PLAYBOOK</h1>
+            <div class="hero-tagline">EDUCATE • INNOVATE • DOMINATE</div>
+            <div class="hero-divider"></div>
+            <p class="hero-subtitle">
+                Share your best setups, track your progress, and dominate the markets with our professional trading playbook system.
+            </p>
         </div>
     </div>
 
-    <!-- Controls Section -->
-    <div class="controls-section animate-fade-in">
-        <div class="controls-grid">
-            <div class="form-group">
-                <label class="form-label">Orientation</label>
-                <div class="orientation-toggle">
-                    <button type="button" class="orientation-btn active" data-orientation="landscape">
-                        <i class="fas fa-th-large"></i>
-                        Landscape
+    <!-- Main Content -->
+    <div class="playbook-main">
+        <!-- Sidebar Navigation -->
+        <div class="playbook-sidebar">
+            <h2 class="sidebar-title">
+                <i class="fas fa-book"></i>
+                PLAYBOOK NAVIGATION
+            </h2>
+            
+            <div class="sidebar-section">
+                <h3 class="section-title">My Playbooks</h3>
+                <ul class="sidebar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">
+                            <i class="fas fa-chart-line"></i>
+                            All Setups
+                            <span class="playbook-count">{{ playbooks|length }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-star"></i>
+                            Favorites
+                            <span class="playbook-count">12</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-fire"></i>
+                            Most Used
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-tags"></i>
+                            By Category
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="section-title">Categories</h3>
+                <ul class="sidebar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-bullish"></i>
+                            Bullish Patterns
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-bearish"></i>
+                            Bearish Patterns
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-arrows-alt-h"></i>
+                            Range Strategies
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-bolt"></i>
+                            Breakout Plays
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-shield-alt"></i>
+                            Risk Management
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="section-title">Quick Stats</h3>
+                <div style="color: rgba(255, 255, 255, 0.9); padding: 0 1rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                        <span>Total Plays:</span>
+                        <span style="color: var(--primary-accent); font-weight: 600;">{{ playbooks|length }}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                        <span>Success Rate:</span>
+                        <span style="color: #10b981; font-weight: 600;">78%</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Avg. Profit:</span>
+                        <span style="color: var(--primary-accent); font-weight: 600;">+2.4%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="playbook-content">
+            <!-- Content Header -->
+            <div class="content-header">
+                <h2 class="content-title">
+                    <i class="fas fa-chart-network"></i>
+                    My Trading Setups
+                </h2>
+                <div class="content-actions">
+                    <button class="btn btn-outline" onclick="toggleCreateForm()">
+                        <i class="fas fa-plus"></i>
+                        New Setup
                     </button>
-                    <button type="button" class="orientation-btn" data-orientation="portrait">
-                        <i class="fas fa-th"></i>
-                        Portrait
+                    <button class="btn btn-primary" onclick="exportAllPlaybooks()">
+                        <i class="fas fa-file-export"></i>
+                        Export All
                     </button>
                 </div>
             </div>
-            
-            <div class="form-group">
-                <label class="form-label">Filter Days</label>
-                <select class="form-select" id="dayFilter">
-                    <option value="all">All Days</option>
-                    <option value="completed">Completed Days</option>
-                    <option value="incomplete">Incomplete Days</option>
-                    <option value="current">Current & Upcoming</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Jump to Day</label>
-                <div style="display: flex; gap: 0.5rem;">
-                    <input type="number" min="1" max="100" class="form-input" id="jumpToDay" placeholder="Enter day 1-100">
-                    <button class="btn btn-save" onclick="jumpToDay()">Go</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Progress Section -->
-    <div class="progress-section">
-        <div class="progress-label">
-            <span>Overall Progress</span>
-            <span>{{ progress_percentage }}%</span>
-        </div>
-        <div class="progress-bar">
-            <div class="progress-fill" style="width: {{ progress_percentage }}%;"></div>
-        </div>
-    </div>
-
-    <!-- Days Grid - Landscape Layout -->
-    <div class="days-grid-landscape" id="daysGrid">
-        {% for day in range(1, 101) %}
-        {% set day_data = days.get(day, {}) %}
-        <div class="day-card {% if day == current_day %}current-day{% endif %} {% if day_data.completed %}completed{% endif %}" 
-             data-day="{{ day }}"
-             onclick="openDayModal({{ day }})">
-            <div class="day-number">Day {{ day }}</div>
-            
-            <div class="day-status {% if day_data.completed %}completed{% elif day == current_day %}current{% endif %}">
-                {% if day_data.completed %}
-                    <i class="fas fa-check"></i>
-                {% elif day == current_day %}
-                    {{ day }}
-                {% endif %}
-            </div>
-            
-            <div class="day-content">
-                <div class="day-title">{{ day_data.title or "Daily Challenge" }}</div>
-                <div class="day-description">{{ day_data.description[:60] or "Click to set up your daily goals..." }}{% if day_data.description and day_data.description|length > 60 %}...{% endif %}</div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <!-- Day Detail Modal -->
-    <div class="day-modal" id="dayModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button class="close-modal" onclick="closeDayModal()">×</button>
-                <div class="modal-day-number" id="modalDayNumber">Day 1</div>
-                <h2 class="modal-title" id="modalDayTitle">Daily Challenge</h2>
-            </div>
-            
-            <div class="modal-body">
-                <form id="dayForm">
-                    <input type="hidden" id="dayId" name="day_id">
-                    
-                    <div class="form-group">
-                        <label class="form-label">Challenge Title</label>
-                        <input type="text" id="dayTitle" name="title" class="form-input" placeholder="Enter today's challenge title">
+            <!-- Create New Playbook Form (Initially Hidden) -->
+            <div class="create-section" id="createForm" style="display: none;">
+                <h3 class="create-title">
+                    <i class="fas fa-plus-circle"></i>
+                    Create New Trading Setup
+                </h3>
+                <form method="POST" enctype="multipart/form-data" id="playbookForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Setup Name *</label>
+                            <input type="text" name="setup_name" required class="form-input" 
+                                   placeholder="e.g., Bull Flag Breakout">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Category</label>
+                            <select name="category" class="form-select">
+                                <option value="">Select Category</option>
+                                <option value="bullish">Bullish Pattern</option>
+                                <option value="bearish">Bearish Pattern</option>
+                                <option value="range">Range Trading</option>
+                                <option value="breakout">Breakout Strategy</option>
+                                <option value="reversal">Reversal Play</option>
+                            </select>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label">Daily Focus</label>
-                        <textarea id="dayFocus" name="focus" class="form-textarea" placeholder="What's your main focus for today?"></textarea>
+                        <label class="form-label">Setup Description *</label>
+                        <textarea name="notes" required class="form-textarea" 
+                                  placeholder="Describe your trading setup in detail..."></textarea>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Entry Conditions</label>
+                            <textarea name="entry_conditions" class="form-textarea" 
+                                      placeholder="What conditions trigger your entry?"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Exit Strategy</label>
+                            <textarea name="exit_strategy" class="form-textarea" 
+                                      placeholder="Your profit targets and stop losses..."></textarea>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label">Tasks & Goals</label>
-                        <textarea id="dayTasks" name="tasks" class="form-textarea" placeholder="List your tasks and goals for today..."></textarea>
+                        <label class="form-label">Chart Screenshot (Optional)</label>
+                        <input type="file" name="screenshot" accept="image/*" class="form-input">
+                        <small style="color: #6b7280; margin-top: 0.5rem; display: block;">
+                            Upload a chart screenshot or diagram (PNG, JPG, Max 5MB)
+                        </small>
                     </div>
                     
-                    <div class="form-group">
-                        <label class="form-label">Key Learnings</label>
-                        <textarea id="dayLearnings" name="learnings" class="form-textarea" placeholder="What did you learn today?"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Results & Metrics</label>
-                        <textarea id="dayResults" name="results" class="form-textarea" placeholder="Track your results and metrics..."></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Rating (1-10)</label>
-                        <select id="dayRating" name="rating" class="form-select">
-                            <option value="">Select rating</option>
-                            {% for i in range(1, 11) %}
-                            <option value="{{ i }}">{{ i }} - {% if i <= 3 %}Poor{% elif i <= 6 %}Good{% elif i <= 8 %}Great{% else %}Excellent{% endif %}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="dayCompleted" name="completed">
-                        <label for="dayCompleted" style="font-weight: 600; color: var(--primary-dark);">
-                            Mark as Completed
-                        </label>
-                    </div>
-                    
-                    <div class="modal-actions">
-                        <button type="button" class="btn btn-cancel" onclick="closeDayModal()">
-                            <i class="fas fa-times"></i>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="toggleCreateForm()">
                             Cancel
                         </button>
-                        <button type="button" class="btn btn-complete" onclick="markDayCompleted()">
-                            <i class="fas fa-check-circle"></i>
-                            Complete Day
-                        </button>
-                        <button type="submit" class="btn btn-save">
+                        <button type="submit" class="btn btn-primary">
                             <i class="fas fa-save"></i>
-                            Save Changes
+                            Save Playbook
                         </button>
                     </div>
                 </form>
             </div>
+
+            <!-- Playbooks Grid -->
+            {% if playbooks %}
+                <div class="playbooks-grid">
+                    {% for pb in playbooks %}
+                    <div class="playbook-card animate-in">
+                        <div class="card-header">
+                            <div class="card-day">Setup #{{ loop.index }}</div>
+                            <h3 class="card-title">{{ pb[1] }}</h3>
+                            <div class="card-meta">
+                                <span>
+                                    <i class="fas fa-tag"></i>
+                                    {{ pb[4] or 'General' }}
+                                </span>
+                                <span>
+                                    <i class="fas fa-calendar"></i>
+                                    {{ pb[5].strftime('%b %d, %Y') if pb[5] else 'Recently' }}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-body">
+                            <p class="card-description">
+                                {{ pb[2][:150] or "No description provided." }}{% if pb[2] and pb[2]|length > 150 %}...{% endif %}
+                            </p>
+                            
+                            <div class="card-stats">
+                                <div class="stat">
+                                    <span class="stat-value">78%</span>
+                                    <span class="stat-label">Win Rate</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">2.4R</span>
+                                    <span class="stat-label">Risk/Reward</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">12</span>
+                                    <span class="stat-label">Uses</span>
+                                </div>
+                            </div>
+                            
+                            <div class="card-actions">
+                                {% if pb[3] %}
+                                <a href="{{ url_for('download_playbook', filename=pb[3]) }}" 
+                                   download class="btn btn-primary">
+                                    <i class="fas fa-download"></i>
+                                    Download
+                                </a>
+                                {% endif %}
+                                <a href="{{ url_for('edit_playbook', pb_id=pb[0]) }}" 
+                                   class="btn btn-secondary">
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <!-- Empty State -->
+                <div class="empty-state animate-in">
+                    <div class="empty-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="empty-title">No Playbooks Yet</h3>
+                    <p class="empty-description">
+                        Start building your trading playbook by documenting your best setups, strategies, and insights. 
+                        Your future self will thank you!
+                    </p>
+                    <button onclick="toggleCreateForm()" class="btn btn-primary" style="width: auto; padding: 1rem 2rem;">
+                        <i class="fas fa-plus"></i>
+                        Create Your First Playbook
+                    </button>
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>
 
 <script>
-    let currentOrientation = 'landscape';
-    let currentDayData = {};
-    
-    // Orientation toggle
-    document.querySelectorAll('.orientation-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const orientation = this.dataset.orientation;
-            
-            document.querySelectorAll('.orientation-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            
-            const daysGrid = document.getElementById('daysGrid');
-            daysGrid.className = `days-grid-${orientation}`;
-            currentOrientation = orientation;
-            
-            // Save preference to localStorage
-            localStorage.setItem('challengeOrientation', orientation);
-        });
-    });
-    
-    // Load saved orientation
-    window.addEventListener('DOMContentLoaded', function() {
-        const savedOrientation = localStorage.getItem('challengeOrientation') || 'landscape';
-        const btn = document.querySelector(`.orientation-btn[data-orientation="${savedOrientation}"]`);
-        if (btn) {
-            btn.click();
-        }
-    });
-    
-    // Day filtering
-    document.getElementById('dayFilter').addEventListener('change', function() {
-        const filter = this.value;
-        const dayCards = document.querySelectorAll('.day-card');
-        
-        dayCards.forEach(card => {
-            const day = parseInt(card.dataset.day);
-            const isCompleted = card.classList.contains('completed');
-            const isCurrent = card.classList.contains('current-day');
-            
-            switch(filter) {
-                case 'completed':
-                    card.style.display = isCompleted ? 'block' : 'none';
-                    break;
-                case 'incomplete':
-                    card.style.display = !isCompleted ? 'block' : 'none';
-                    break;
-                case 'current':
-                    card.style.display = isCurrent ? 'block' : 'none';
-                    break;
-                default:
-                    card.style.display = 'block';
-            }
-        });
-    });
-    
-    function jumpToDay() {
-        const dayInput = document.getElementById('jumpToDay');
-        const day = parseInt(dayInput.value);
-        
-        if (day >= 1 && day <= 100) {
-            openDayModal(day);
-            dayInput.value = '';
-            
-            // Scroll to the day card
-            const dayCard = document.querySelector(`.day-card[data-day="${day}"]`);
-            if (dayCard) {
-                dayCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // Add highlight effect
-                dayCard.style.animation = 'none';
-                setTimeout(() => {
-                    dayCard.style.animation = 'pulse 1s 3';
-                }, 10);
-            }
+    function toggleCreateForm() {
+        const form = document.getElementById('createForm');
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+            form.scrollIntoView({ behavior: 'smooth' });
         } else {
-            showNotification('Please enter a day between 1 and 100', 'error');
+            form.style.display = 'none';
         }
     }
     
-    function openDayModal(day) {
-        // Load day data (in real app, this would come from your backend)
-        currentDayData = window.dayDataCache && window.dayDataCache[day] || {
-            title: `Day ${day} Challenge`,
-            focus: '',
-            tasks: '',
-            learnings: '',
-            results: '',
-            rating: '',
-            completed: false
-        };
+    function exportAllPlaybooks() {
+        // In a real app, this would trigger a download of all playbooks
+        showNotification('Exporting all playbooks...', 'info');
         
-        // Update modal
-        document.getElementById('modalDayNumber').textContent = `Day ${day}`;
-        document.getElementById('modalDayTitle').textContent = currentDayData.title;
-        document.getElementById('dayId').value = day;
-        document.getElementById('dayTitle').value = currentDayData.title;
-        document.getElementById('dayFocus').value = currentDayData.focus;
-        document.getElementById('dayTasks').value = currentDayData.tasks;
-        document.getElementById('dayLearnings').value = currentDayData.learnings;
-        document.getElementById('dayResults').value = currentDayData.results;
-        document.getElementById('dayRating').value = currentDayData.rating;
-        document.getElementById('dayCompleted').checked = currentDayData.completed;
-        
-        // Show modal
-        document.getElementById('dayModal').classList.add('active');
-        document.body.style.overflow = 'hidden';
+        // Simulate export process
+        setTimeout(() => {
+            showNotification('All playbooks exported successfully!', 'success');
+        }, 1500);
     }
     
-    function closeDayModal() {
-        document.getElementById('dayModal').classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-    
-    function markDayCompleted() {
-        const completedCheckbox = document.getElementById('dayCompleted');
-        completedCheckbox.checked = true;
+    // Form submission handler
+    document.getElementById('playbookForm')?.addEventListener('submit', function(e) {
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
         
-        showNotification('Day marked as completed!', 'success');
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+        submitBtn.disabled = true;
         
-        // Update the day card visually
-        const dayId = document.getElementById('dayId').value;
-        const dayCard = document.querySelector(`.day-card[data-day="${dayId}"]`);
-        if (dayCard) {
-            dayCard.classList.add('completed');
-            const statusIcon = dayCard.querySelector('.day-status');
-            if (statusIcon) {
-                statusIcon.className = 'day-status completed';
-                statusIcon.innerHTML = '<i class="fas fa-check"></i>';
-            }
-        }
-    }
-    
-    // Form submission
-    document.getElementById('dayForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // In a real app, you would submit to your backend here
-        const formData = {
-            day_id: document.getElementById('dayId').value,
-            title: document.getElementById('dayTitle').value,
-            focus: document.getElementById('dayFocus').value,
-            tasks: document.getElementById('dayTasks').value,
-            learnings: document.getElementById('dayLearnings').value,
-            results: document.getElementById('dayResults').value,
-            rating: document.getElementById('dayRating').value,
-            completed: document.getElementById('dayCompleted').checked
-        };
-        
-        // Update cache
-        if (!window.dayDataCache) window.dayDataCache = {};
-        window.dayDataCache[formData.day_id] = formData;
-        
-        // Update day card
-        const dayCard = document.querySelector(`.day-card[data-day="${formData.day_id}"]`);
-        if (dayCard) {
-            const titleEl = dayCard.querySelector('.day-title');
-            const descEl = dayCard.querySelector('.day-description');
-            
-            if (titleEl) titleEl.textContent = formData.title;
-            if (descEl) {
-                const description = formData.focus || formData.tasks || "Click to set up your daily goals...";
-                descEl.textContent = description.length > 60 ? description.substring(0, 60) + '...' : description;
-            }
-            
-            if (formData.completed) {
-                dayCard.classList.add('completed');
-                const statusIcon = dayCard.querySelector('.day-status');
-                if (statusIcon) {
-                    statusIcon.className = 'day-status completed';
-                    statusIcon.innerHTML = '<i class="fas fa-check"></i>';
-                }
-            }
-        }
-        
-        showNotification('Day data saved successfully!', 'success');
-        closeDayModal();
-        
-        // In a real app, you would send to your backend:
-        // fetch('/save_day', {
-        //     method: 'POST',
-        //     headers: {'Content-Type': 'application/json'},
-        //     body: JSON.stringify(formData)
-        // })
+        // In a real app, you would handle the form submission here
+        // For now, just show a success message after delay
+        setTimeout(() => {
+            showNotification('Playbook saved successfully!', 'success');
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            toggleCreateForm();
+        }, 2000);
     });
     
-    // Close modal on outside click
-    document.getElementById('dayModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeDayModal();
-        }
-    });
-    
-    // Notification function
+    // Notification system
     function showNotification(message, type) {
         const notification = document.createElement('div');
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            color: white;
-            font-weight: 600;
-            z-index: 2000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: all 0.3s ease;
-            background: ${type === 'success' ? '#10b981' : '#ef4444'};
-            transform: translateX(100%);
-            opacity: 0;
+        notification.innerHTML = `
+            <div style="
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                color: white;
+                font-weight: 600;
+                z-index: 9999;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#0e81f2'};
+                transform: translateX(100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+            ">
+                ${message}
+            </div>
         `;
-        notification.textContent = message;
         
         document.body.appendChild(notification);
         
-        // Animate in
         setTimeout(() => {
-            notification.style.transform = 'translateX(0)';
             notification.style.opacity = '1';
+            notification.style.transform = 'translateX(0)';
         }, 10);
         
-        // Remove after 3 seconds
         setTimeout(() => {
             notification.style.opacity = '0';
             notification.style.transform = 'translateX(100%)';
-            setTimeout(() => {
-                document.body.removeChild(notification);
-            }, 300);
+            setTimeout(() => notification.remove(), 300);
         }, 3000);
     }
     
-    // Add hover effects to day cards
+    // Add smooth animations to cards
     document.addEventListener('DOMContentLoaded', function() {
-        const dayCards = document.querySelectorAll('.day-card');
-        
-        dayCards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                if (!this.classList.contains('completed')) {
-                    this.style.transform = 'translateY(-5px) scale(1.02)';
-                }
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
+        const cards = document.querySelectorAll('.playbook-card');
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
         });
         
-        // Initialize day data cache from backend data (you'd populate this from your Flask template)
-        window.dayDataCache = {{ days_json|safe if days_json else '{}' }};
+        // Add active state to clicked nav items
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
     });
 </script>
 {% endblock %}
